@@ -1,15 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const CardWrapper = styled.div`
-  background: #fff;
-  border-radius: 6px;
-  max-width: 700px;
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
-`;
+import { CardWrapper } from "./styles/CardStyles";
 
 const Voting = styled.div`
   display: flex;
@@ -70,7 +62,7 @@ export default function Card() {
       </Voting>
 
       <FlexCol>
-        <FlexRow justify="space-between" style={{ marginBottom: "1rem" }}>
+        <FlexRow justify="space-between" style={{ marginBottom: "0.8rem" }}>
           <FlexRow gap="1rem">
             <FlexRow gap="1rem">
               <img

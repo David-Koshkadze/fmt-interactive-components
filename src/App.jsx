@@ -1,4 +1,5 @@
 import Card from "./Card";
+import Comment from "./Comment";
 import styled, { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
@@ -17,6 +18,7 @@ const GlobalStyles = createGlobalStyle`
 
 const AppContainer = styled.div`
   background: var(--Light-gray);
+  padding-top: 4rem;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -31,6 +33,7 @@ function App() {
       <AppContainer>
         <Card />
         <Card />
+        <Comment />
       </AppContainer>
     </>
   );
