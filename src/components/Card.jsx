@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { CardWrapper } from "./styles/CardStyles";
+import { CardWrapper } from "../styles/CardStyles";
 
 const Voting = styled.div`
   display: flex;

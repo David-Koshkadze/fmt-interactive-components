@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import Card from "./Card";
 import Comment from "./Comment";
 import styled, { createGlobalStyle } from "styled-components";
+import CardWrapper from "./components/CardWrapper";
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -21,7 +21,6 @@ const AppContainer = styled.div`
   background: var(--Light-gray);
   padding-top: 4rem;
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +43,7 @@ function App() {
       <GlobalStyles />
       <AppContainer>
         {usersData.comments?.map((comment) => (
-          <Card key={comment.id} comment={comment} />
+          <CardWrapper key={comment.id} comment={comment} />
         ))}
         <Comment />
       </AppContainer>
