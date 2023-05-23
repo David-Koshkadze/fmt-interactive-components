@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Card from "./Card";
 import Comment from "./Comment";
 import styled, { createGlobalStyle } from "styled-components";
@@ -27,12 +28,24 @@ const AppContainer = styled.div`
 `;
 
 function App() {
+  const [usersData, setUsersData] = useState([]);
+
+  useEffect(() => {
+    fetch("data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setUsersData(data);
+        console.log(data);
+      });
+  }, []);
+
   return (
     <>
       <GlobalStyles />
       <AppContainer>
-        <Card />
-        <Card />
+        {usersData.comments?.map((comment) => (
+          <Card key={comment.id} comment={comment} />
+        ))}
         <Comment />
       </AppContainer>
     </>

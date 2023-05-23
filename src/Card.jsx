@@ -52,12 +52,12 @@ const TextGray = styled.p`
   line-height: 1.4rem;
 `;
 
-export default function Card() {
+export default function Card({ comment }) {
   return (
     <CardWrapper>
       <Voting>
         <VoteButton>+</VoteButton>
-        <span>12</span>
+        <span>{comment.score}</span>
         <VoteButton>-</VoteButton>
       </Voting>
 
@@ -66,12 +66,12 @@ export default function Card() {
           <FlexRow gap="1rem">
             <FlexRow gap="1rem">
               <img
-                src="/images/avatars/image-amyrobson.png"
+                src={comment.user.image.png}
                 style={{ height: "2rem", width: "2rem" }}
               />
-              <TextAvatar>amyrobson</TextAvatar>
+              <TextAvatar>{comment.user.username}</TextAvatar>
             </FlexRow>
-            <TextGray>1 month ago</TextGray>
+            <TextGray>{comment.createdAt}</TextGray>
           </FlexRow>
           <FlexRow gap="0.5rem">
             <img src="/images/icon-reply.svg" />
@@ -79,11 +79,7 @@ export default function Card() {
           </FlexRow>
         </FlexRow>
 
-        <TextGray>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque vel
-          deserunt temporibus eum veniam dolores accusamus modi aut similique
-          nobis, saepe nulla error culpa expedita consequuntur assumenda?
-        </TextGray>
+        <TextGray>{comment.content}</TextGray>
       </FlexCol>
     </CardWrapper>
   );
