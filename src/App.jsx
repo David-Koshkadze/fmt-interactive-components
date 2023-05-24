@@ -26,6 +26,11 @@ const AppContainer = styled.div`
   align-items: center;
 `;
 
+const CardContainer = styled.div`
+  border: 1px solid blue;
+  max-width: 700px;
+`
+
 function App() {
   const [usersData, setUsersData] = useState([]);
 
@@ -42,10 +47,13 @@ function App() {
     <>
       <GlobalStyles />
       <AppContainer>
-        {usersData.comments?.map((comment) => (
-          <CardWrapper key={comment.id} comment={comment} />
-        ))}
-        <Comment />
+        <CardContainer>
+          {usersData.comments?.map((comment) => (
+            <CardWrapper key={comment.id} comment={comment} />
+          ))}
+
+          <Comment />
+        </CardContainer>
       </AppContainer>
     </>
   );

@@ -15,6 +15,7 @@ const Voting = styled.div`
   gap: 0.7rem;
   color: var(--Moderate-blue);
   height: max-content;
+  width: 3.5rem;
 `;
 
 const VoteButton = styled.div`
