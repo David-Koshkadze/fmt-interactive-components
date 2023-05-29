@@ -10,12 +10,12 @@ const Voting = styled.div`
   align-items: center;
   padding: 0.4rem 0.6rem;
   background-color: var(--Light-gray);
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 500;
   gap: 0.7rem;
   color: var(--Moderate-blue);
   height: max-content;
-  width: 3.5rem;
+  width: 2.5rem;
 `;
 
 const VoteButton = styled.div`
@@ -29,6 +29,7 @@ const VoteButton = styled.div`
 const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 
 const FlexRow = styled.div`
@@ -42,6 +43,7 @@ const TextReply = styled.span`
   font-weight: 600;
   font-size: 1rem;
   color: var(--Moderate-blue);
+  cursor: pointer;
 `;
 
 const TextAvatar = styled(TextReply)`

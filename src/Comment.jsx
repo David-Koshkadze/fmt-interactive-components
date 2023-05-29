@@ -1,6 +1,7 @@
-import React from "react";
-import { CardWrapper } from "./styles/CardStyles";
+import React, { useState } from "react";
 import styled from "styled-components";
+
+import { CardWrapper } from "./styles/CardStyles";
 
 const Flex = styled.div`
   display: flex;
@@ -34,18 +35,36 @@ const TextArea = styled.textarea`
   font-family: "Rubik";
   background: var(--White);
   font-size: 15px;
+  outline: none;
+  &:focus {
+    outline: 1px solid var(--Moderate-blue);
+  }
+  font-family: "Rubik";
 `;
 
-export default function Comment() {
+export default function Comment({ currentUser, handleAddComment }) {
+  const [comment, setComment] = useState("");
+
+  function addComment() {
+    handleAddComment(comment);
+    setComment("");
+  }
+
   return (
-    <CardWrapper style={{
-      justifyContent: 'space-between',
-      alignItems: 'flex-start',
-      width: '700px'
-    }}>
-      <Avatar src="/images/avatars/image-juliusomo.webp" />
-      <TextArea placeholder="Add a comment..."></TextArea>
-      <SendButton>Send</SendButton>
+    <CardWrapper
+      style={{
+        justifyContent: "space-between",
+        alignItems: "flex-start",
+      }}
+    >
+      <Avatar src={currentUser?.image?.webp} />
+      <TextArea
+        placeholder="Add a comment..."
+        rows="3"
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      ></TextArea>
+      <SendButton onClick={addComment}>Send</SendButton>
     </CardWrapper>
   );
 }

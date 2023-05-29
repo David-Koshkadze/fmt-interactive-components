@@ -29,30 +29,52 @@ const AppContainer = styled.div`
 const CardContainer = styled.div`
   border: 1px solid blue;
   max-width: 700px;
-`
+`;
 
 function App() {
-  const [usersData, setUsersData] = useState([]);
+  const [currentUser, setCurrentUser] = useState(undefined);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     fetch("data.json")
       .then((res) => res.json())
       .then((data) => {
-        setUsersData(data);
-        console.log(data);
-      });
+        setCurrentUser(data.currentUser);
+        setComments(data.comments);
+      })
+      .catch((err) => console.error(err));
   }, []);
+
+  function handleAddComment(comment) {
+    const newComment = {
+      id: Date.now(),
+      id: 1,
+      content: comment,
+      createdAt: "1 month ago",
+      score: 0,
+      user: {
+        image: {
+          png: currentUser.image.png,
+          webp: currentUser.image.webp,
+        },
+        username: currentUser.username,
+      },
+      replies: [],
+    };
+
+    setComments((prevComments) => [...prevComments, newComment]);
+  }
 
   return (
     <>
       <GlobalStyles />
       <AppContainer>
         <CardContainer>
-          {usersData.comments?.map((comment) => (
+          {comments.map((comment) => (
             <CardWrapper key={comment.id} comment={comment} />
           ))}
 
-          <Comment />
+          <Comment currentUser={currentUser} handleAddComment={handleAddComment} />
         </CardContainer>
       </AppContainer>
     </>
