@@ -55,13 +55,17 @@ const TextGray = styled.p`
   line-height: 1.4rem;
 `;
 
-export default function Card({ comment }) {
+export default function Card({ comment, handleVote }) {
   return (
     <CardWrapper>
       <Voting>
-        <VoteButton>+</VoteButton>
+        <VoteButton onClick={() => handleVote(comment.id, "upvote")}>
+          +
+        </VoteButton>
         <span>{comment.score}</span>
-        <VoteButton>-</VoteButton>
+        <VoteButton onClick={() => handleVote(comment.id, "downvote")}>
+          -
+        </VoteButton>
       </Voting>
 
       <FlexCol>

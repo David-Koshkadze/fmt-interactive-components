@@ -48,7 +48,6 @@ function App() {
   function handleAddComment(comment) {
     const newComment = {
       id: Date.now(),
-      id: 1,
       content: comment,
       createdAt: "1 month ago",
       score: 0,
@@ -65,16 +64,38 @@ function App() {
     setComments((prevComments) => [...prevComments, newComment]);
   }
 
+  function handleVote(commentId, vote) {
+    const updatedComments = comments.map((comment) => {
+      if (comment.id === commentId) {
+        if (vote === "upvote") {
+          return { ...comment, score: comment.score + 1 };
+        } else if (vote === "downvote") {
+          return { ...comment, score: comment.score - 1 };
+        }
+      }
+      return comment;
+    });
+
+    setComments(updatedComments);
+  }
+
   return (
     <>
       <GlobalStyles />
       <AppContainer>
         <CardContainer>
           {comments.map((comment) => (
-            <CardWrapper key={comment.id} comment={comment} />
+            <CardWrapper
+              key={comment.id}
+              comment={comment}
+              handleVote={handleVote}
+            />
           ))}
 
-          <Comment currentUser={currentUser} handleAddComment={handleAddComment} />
+          <Comment
+            currentUser={currentUser}
+            handleAddComment={handleAddComment}
+          />
         </CardContainer>
       </AppContainer>
     </>

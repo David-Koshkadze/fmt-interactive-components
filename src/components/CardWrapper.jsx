@@ -9,14 +9,14 @@ const ReplyDiv = styled.div`
   padding-left: 2rem;
 `;
 
-export default function CardWrapper({ comment }) {
+export default function CardWrapper({ comment, handleVote }) {
   return (
     <div>
-      <Card comment={comment} />
+      <Card comment={comment} handleVote={handleVote} />
       {comment.replies ? (
         <ReplyDiv>
           {comment.replies.map((comment) => (
-            <Card key={comment.id} comment={comment} />
+            <Card key={comment.id} comment={comment} handleVote={handleVote} />
           ))}
         </ReplyDiv>
       ) : null}
